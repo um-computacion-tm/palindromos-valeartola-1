@@ -5,6 +5,12 @@ def obtener_cantidad_de_palabras_palindrome(palabras):
     contador_pal = 0
     for palabra in palabras:
         palabra = palabra.replace(" ","")
+        palabra = palabra.replace(" ", "")
+        palabra = palabra.replace(":", "")
+        palabra = palabra.replace("-", "")
+        palabra = palabra.replace(",", "")
+        palabra = palabra.lower()
+        
         if is_palindrome(palabra) is True:
             contador_pal = contador_pal + 1
     return contador_pal
@@ -51,9 +57,10 @@ class TestCantidadDePalabrasPalindromes(unittest.TestCase):
             "neu  quen",
             "agita falsos usos la fatiga",
             "presidente de la camara de diputados: martin menem",
+            "A man, a plan, a canal - Panama"
         ]
         resultado = obtener_cantidad_de_palabras_palindrome(palabras)
-        self.assertEqual(resultado, 5)
+        self.assertEqual(resultado, 6)
 
 
 unittest.main()
